@@ -143,14 +143,10 @@ module Frontend_inorder(	// src/main/scala/nutcore/frontend/Frontend.scala:93:7
   input  [38:0] io_redirect_target,	// src/main/scala/nutcore/frontend/Frontend.scala:36:14
   input         io_redirect_valid,	// src/main/scala/nutcore/frontend/Frontend.scala:36:14
                 io_ipf,	// src/main/scala/nutcore/frontend/Frontend.scala:36:14
-  input  [11:0] idu_decoder1_intrVec__bore,
-                idu_decoder2_intrVec__bore,
-  input         ifu_bp1_flushBTB__bore,
   output        ifu__WIRE__bore,
   input         ifu_bp1_flushTLB__bore,
-  output        idu__WIRE__bore,
-                ifu_r_bore,
-  input         idu_decoder1_vmEnable__bore,
+  output        ifu_r_bore,
+  input         ifu_bp1_flushBTB__bore,
                 ifu_bp1_req__bore_valid,
   input  [38:0] ifu_bp1_req__bore_pc,
   input         ifu_bp1_req__bore_isMissPredict,
@@ -158,7 +154,11 @@ module Frontend_inorder(	// src/main/scala/nutcore/frontend/Frontend.scala:93:7
   input         ifu_bp1_req__bore_actualTaken,
   input  [6:0]  ifu_bp1_req__bore_fuOpType,
   input  [1:0]  ifu_bp1_req__bore_btbType,
-  input         ifu_bp1_req__bore_isRVC
+  input         ifu_bp1_req__bore_isRVC,
+  output        idu__WIRE__bore,
+  input  [11:0] idu_decoder1_intrVec__bore,
+                idu_decoder2_intrVec__bore,
+  input         idu_decoder1_vmEnable__bore
 );
 
   wire [63:0] _LogPerfHelper_timer;	// difftest/src/main/scala/common/LogPerfControl.scala:60:79
@@ -283,10 +283,10 @@ module Frontend_inorder(	// src/main/scala/nutcore/frontend/Frontend.scala:93:7
     .io_redirect_valid           (io_redirect_valid),
     .io_flushVec                 (_ifu_io_flushVec),
     .io_ipf                      (io_ipf),
-    .bp1_flushBTB__bore          (ifu_bp1_flushBTB__bore),
     ._WIRE__bore                 (ifu__WIRE__bore),
     .bp1_flushTLB__bore          (ifu_bp1_flushTLB__bore),
     .r__bore                     (ifu_r_bore),
+    .bp1_flushBTB__bore          (ifu_bp1_flushBTB__bore),
     .bp1_req__bore_valid         (ifu_bp1_req__bore_valid),
     .bp1_req__bore_pc            (ifu_bp1_req__bore_pc),
     .bp1_req__bore_isMissPredict (ifu_bp1_req__bore_isMissPredict),
@@ -371,9 +371,9 @@ module Frontend_inorder(	// src/main/scala/nutcore/frontend/Frontend.scala:93:7
     .io_out_1_bits_cf_intrVec_9       (io_out_1_bits_cf_intrVec_9),
     .io_out_1_bits_cf_intrVec_10      (io_out_1_bits_cf_intrVec_10),
     .io_out_1_bits_cf_intrVec_11      (io_out_1_bits_cf_intrVec_11),
+    ._WIRE__bore                      (idu__WIRE__bore),
     .decoder1_intrVec__bore           (idu_decoder1_intrVec__bore),
     .decoder2_intrVec__bore           (idu_decoder2_intrVec__bore),
-    ._WIRE__bore                      (idu__WIRE__bore),
     .decoder1_vmEnable__bore          (idu_decoder1_vmEnable__bore)
   );
   FlushableQueue ibf_io_in_q (	// src/main/scala/utils/FlushableQueue.scala:94:21

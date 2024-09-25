@@ -105,8 +105,8 @@ module AXI4CLINT(	// src/main/scala/device/AXI4CLINT.scala:31:7
   output        io_extra_mtip,	// src/main/scala/device/AXI4Slave.scala:28:14
                 io_extra_msip,	// src/main/scala/device/AXI4Slave.scala:28:14
                 io_extra_mtip__bore,
-                io_extra_msip__bore,
-  input         isWFI__bore
+  input         isWFI__bore,
+  output        io_extra_msip__bore
 );
 
   reg         r_busy;	// src/main/scala/utils/StopWatch.scala:24:20

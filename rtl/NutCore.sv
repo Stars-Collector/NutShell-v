@@ -131,10 +131,10 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
   output        io_frontend_resp_valid,	// src/main/scala/nutcore/NutCore.scala:97:14
   output [3:0]  io_frontend_resp_bits_cmd,	// src/main/scala/nutcore/NutCore.scala:97:14
   output [63:0] io_frontend_resp_bits_rdata,	// src/main/scala/nutcore/NutCore.scala:97:14
-  input         backend_exu_csr_mtip__bore,
-                backend_exu_csr_msip__bore,
-                backend_exu_csr_meip__bore,
-  output        frontend_idu__WIRE__bore
+  input         backend_exu_csr_meip__bore,
+                backend_exu_csr_mtip__bore,
+  output        frontend_idu__WIRE__bore,
+  input         backend_exu_csr_msip__bore
 );
 
   wire             _io_dmem_cache_io_in_req_ready;	// src/main/scala/nutcore/mem/Cache.scala:668:35
@@ -235,16 +235,14 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
   wire             _backend_io_memMMU_dmem_status_mxr;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire [38:0]      _backend_io_redirect_target;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire             _backend_io_redirect_valid;	// src/main/scala/nutcore/NutCore.scala:146:25
-  wire [63:0]      _backend_exu_csr_satp__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
-  wire [63:0]      _backend_exu_csr_satp__bore_0;	// src/main/scala/nutcore/NutCore.scala:146:25
-  wire [11:0]      _backend_exu_csr__WIRE__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
-  wire [11:0]      _backend_exu_csr__WIRE__bore_0;	// src/main/scala/nutcore/NutCore.scala:146:25
-  wire             _backend_exu_mou__WIRE__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
-  wire             _backend_exu_mou__WIRE__bore_0;	// src/main/scala/nutcore/NutCore.scala:146:25
-  wire             _backend_exu_lsu__WIRE__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire             _backend_exu_mou__WIRE_1__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire             _backend_exu_mou__WIRE_1__bore_0;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire             _backend_exu_mou__WIRE_1__bore_1;	// src/main/scala/nutcore/NutCore.scala:146:25
+  wire [63:0]      _backend_exu_csr_satp__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
+  wire [63:0]      _backend_exu_csr_satp__bore_0;	// src/main/scala/nutcore/NutCore.scala:146:25
+  wire             _backend_exu_mou__WIRE__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
+  wire             _backend_exu_mou__WIRE__bore_0;	// src/main/scala/nutcore/NutCore.scala:146:25
+  wire             _backend_exu_lsu__WIRE__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire             _backend_exu_alu_REG__bore_valid;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire [38:0]      _backend_exu_alu_REG__bore_pc;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire             _backend_exu_alu_REG__bore_isMissPredict;	// src/main/scala/nutcore/NutCore.scala:146:25
@@ -253,6 +251,8 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
   wire [6:0]       _backend_exu_alu_REG__bore_fuOpType;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire [1:0]       _backend_exu_alu_REG__bore_btbType;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire             _backend_exu_alu_REG__bore_isRVC;	// src/main/scala/nutcore/NutCore.scala:146:25
+  wire [11:0]      _backend_exu_csr__WIRE__bore;	// src/main/scala/nutcore/NutCore.scala:146:25
+  wire [11:0]      _backend_exu_csr__WIRE__bore_0;	// src/main/scala/nutcore/NutCore.scala:146:25
   wire             _frontend_io_imem_req_valid;	// src/main/scala/nutcore/NutCore.scala:103:34
   wire [38:0]      _frontend_io_imem_req_bits_addr;	// src/main/scala/nutcore/NutCore.scala:103:34
   wire [86:0]      _frontend_io_imem_req_bits_user;	// src/main/scala/nutcore/NutCore.scala:103:34
@@ -1185,14 +1185,10 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
     .io_redirect_target               (_backend_io_redirect_target),	// src/main/scala/nutcore/NutCore.scala:146:25
     .io_redirect_valid                (_backend_io_redirect_valid),	// src/main/scala/nutcore/NutCore.scala:146:25
     .io_ipf                           (_itlb_io_ipf),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
-    .idu_decoder1_intrVec__bore       (_backend_exu_csr__WIRE__bore),	// src/main/scala/nutcore/NutCore.scala:146:25
-    .idu_decoder2_intrVec__bore       (_backend_exu_csr__WIRE__bore_0),	// src/main/scala/nutcore/NutCore.scala:146:25
-    .ifu_bp1_flushBTB__bore           (_backend_exu_mou__WIRE__bore),	// src/main/scala/nutcore/NutCore.scala:146:25
     .ifu__WIRE__bore                  (_frontend_ifu__WIRE__bore),
     .ifu_bp1_flushTLB__bore           (_backend_exu_mou__WIRE_1__bore),	// src/main/scala/nutcore/NutCore.scala:146:25
-    .idu__WIRE__bore                  (frontend_idu__WIRE__bore),
     .ifu_r_bore                      (_frontend_ifu_r_bore),
-    .idu_decoder1_vmEnable__bore      (_dtlb__WIRE_2__bore),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
+    .ifu_bp1_flushBTB__bore           (_backend_exu_mou__WIRE__bore),	// src/main/scala/nutcore/NutCore.scala:146:25
     .ifu_bp1_req__bore_valid          (_backend_exu_alu_REG__bore_valid),	// src/main/scala/nutcore/NutCore.scala:146:25
     .ifu_bp1_req__bore_pc             (_backend_exu_alu_REG__bore_pc),	// src/main/scala/nutcore/NutCore.scala:146:25
     .ifu_bp1_req__bore_isMissPredict  (_backend_exu_alu_REG__bore_isMissPredict),	// src/main/scala/nutcore/NutCore.scala:146:25
@@ -1200,7 +1196,11 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
     .ifu_bp1_req__bore_actualTaken    (_backend_exu_alu_REG__bore_actualTaken),	// src/main/scala/nutcore/NutCore.scala:146:25
     .ifu_bp1_req__bore_fuOpType       (_backend_exu_alu_REG__bore_fuOpType),	// src/main/scala/nutcore/NutCore.scala:146:25
     .ifu_bp1_req__bore_btbType        (_backend_exu_alu_REG__bore_btbType),	// src/main/scala/nutcore/NutCore.scala:146:25
-    .ifu_bp1_req__bore_isRVC          (_backend_exu_alu_REG__bore_isRVC)	// src/main/scala/nutcore/NutCore.scala:146:25
+    .ifu_bp1_req__bore_isRVC          (_backend_exu_alu_REG__bore_isRVC),	// src/main/scala/nutcore/NutCore.scala:146:25
+    .idu__WIRE__bore                  (frontend_idu__WIRE__bore),
+    .idu_decoder1_intrVec__bore       (_backend_exu_csr__WIRE__bore),	// src/main/scala/nutcore/NutCore.scala:146:25
+    .idu_decoder2_intrVec__bore       (_backend_exu_csr__WIRE__bore_0),	// src/main/scala/nutcore/NutCore.scala:146:25
+    .idu_decoder1_vmEnable__bore      (_dtlb__WIRE_2__bore)	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
   );
   Backend_inorder backend (	// src/main/scala/nutcore/NutCore.scala:146:25
     .clock                               (clock),
@@ -1256,26 +1256,20 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
     .io_memMMU_dmem_addr                 (_dtlb_io_csrMMU_addr),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
     .io_redirect_target                  (_backend_io_redirect_target),
     .io_redirect_valid                   (_backend_io_redirect_valid),
-    .exu_csr_satp__bore                  (_backend_exu_csr_satp__bore),
-    .exu_csr_satp__bore_0                (_backend_exu_csr_satp__bore_0),
-    .exu_csr__WIRE__bore                 (_backend_exu_csr__WIRE__bore),
-    .exu_csr__WIRE__bore_0               (_backend_exu_csr__WIRE__bore_0),
-    .exu_csr_mtip__bore                  (backend_exu_csr_mtip__bore),
-    .exu_lsu_lsExecUnit_dtlbFinish__bore (_dtlb__WIRE__bore),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
-    .exu_lsu_lsExecUnit_dtlbPF__bore     (_dtlb__WIRE_1__bore),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
-    .exu_lsu_dtlbPF__bore                (_dtlb__WIRE_1__bore_0),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
-    .exu_mou__WIRE__bore                 (_backend_exu_mou__WIRE__bore),
-    .exu_mou__WIRE__bore_0               (_backend_exu_mou__WIRE__bore_0),
-    .exu_csr_msip__bore                  (backend_exu_csr_msip__bore),
-    .exu_csr_meip__bore                  (backend_exu_csr_meip__bore),
     .exu_csr_perfCntCond_15__bore        (_frontend_ifu__WIRE__bore),	// src/main/scala/nutcore/NutCore.scala:103:34
-    .exu_lsu__WIRE__bore                 (_backend_exu_lsu__WIRE__bore),
+    .exu_lsu_lsExecUnit_dtlbFinish__bore (_dtlb__WIRE__bore),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
     .exu_mou__WIRE_1__bore               (_backend_exu_mou__WIRE_1__bore),
     .exu_mou__WIRE_1__bore_0             (_backend_exu_mou__WIRE_1__bore_0),
     .exu_mou__WIRE_1__bore_1             (_backend_exu_mou__WIRE_1__bore_1),
-    .exu_csr_perfCntCond_4__bore         (_frontend_ifu_r_bore),	// src/main/scala/nutcore/NutCore.scala:103:34
     .exu_lsu_lsuMMIO__bore               (_io_dmem_cache_s3__WIRE__bore),	// src/main/scala/nutcore/mem/Cache.scala:668:35
-    .exu_lsu_lsExecUnit_dtlbEnable__bore (_dtlb__WIRE_2__bore_1),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
+    .exu_csr_meip__bore                  (backend_exu_csr_meip__bore),
+    .exu_csr_mtip__bore                  (backend_exu_csr_mtip__bore),
+    .exu_csr_perfCntCond_4__bore         (_frontend_ifu_r_bore),	// src/main/scala/nutcore/NutCore.scala:103:34
+    .exu_csr_satp__bore                  (_backend_exu_csr_satp__bore),
+    .exu_csr_satp__bore_0                (_backend_exu_csr_satp__bore_0),
+    .exu_mou__WIRE__bore                 (_backend_exu_mou__WIRE__bore),
+    .exu_mou__WIRE__bore_0               (_backend_exu_mou__WIRE__bore_0),
+    .exu_lsu__WIRE__bore                 (_backend_exu_lsu__WIRE__bore),
     .exu_alu_REG__bore_valid             (_backend_exu_alu_REG__bore_valid),
     .exu_alu_REG__bore_pc                (_backend_exu_alu_REG__bore_pc),
     .exu_alu_REG__bore_isMissPredict     (_backend_exu_alu_REG__bore_isMissPredict),
@@ -1283,7 +1277,13 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
     .exu_alu_REG__bore_actualTaken       (_backend_exu_alu_REG__bore_actualTaken),
     .exu_alu_REG__bore_fuOpType          (_backend_exu_alu_REG__bore_fuOpType),
     .exu_alu_REG__bore_btbType           (_backend_exu_alu_REG__bore_btbType),
-    .exu_alu_REG__bore_isRVC             (_backend_exu_alu_REG__bore_isRVC)
+    .exu_alu_REG__bore_isRVC             (_backend_exu_alu_REG__bore_isRVC),
+    .exu_lsu_lsExecUnit_dtlbPF__bore     (_dtlb__WIRE_1__bore),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
+    .exu_lsu_dtlbPF__bore                (_dtlb__WIRE_1__bore_0),	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
+    .exu_csr_msip__bore                  (backend_exu_csr_msip__bore),
+    .exu_csr__WIRE__bore                 (_backend_exu_csr__WIRE__bore),
+    .exu_csr__WIRE__bore_0               (_backend_exu_csr__WIRE__bore_0),
+    .exu_lsu_lsExecUnit_dtlbEnable__bore (_dtlb__WIRE_2__bore_1)	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:426:13
   );
   LogPerfHelper LogPerfHelper (	// difftest/src/main/scala/common/LogPerfControl.scala:60:79
     .timer     (_LogPerfHelper_timer),
@@ -1409,8 +1409,8 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
     .io_csrMMU_privilegeMode (_backend_io_memMMU_imem_privilegeMode),	// src/main/scala/nutcore/NutCore.scala:146:25
     .io_cacheEmpty           (_io_imem_cache_io_empty),	// src/main/scala/nutcore/mem/Cache.scala:668:35
     .io_ipf                  (_itlb_io_ipf),
-    .satp__bore              (_backend_exu_csr_satp__bore),	// src/main/scala/nutcore/NutCore.scala:146:25
-    .flushTLB__bore          (_backend_exu_mou__WIRE_1__bore_0)	// src/main/scala/nutcore/NutCore.scala:146:25
+    .flushTLB__bore          (_backend_exu_mou__WIRE_1__bore_0),	// src/main/scala/nutcore/NutCore.scala:146:25
+    .satp__bore              (_backend_exu_csr_satp__bore)	// src/main/scala/nutcore/NutCore.scala:146:25
   );
   Cache io_imem_cache (	// src/main/scala/nutcore/mem/Cache.scala:668:35
     .clock                      (clock),
@@ -1482,12 +1482,12 @@ module NutCore(	// src/main/scala/nutcore/NutCore.scala:90:7
     .io_csrMMU_storePF       (_dtlb_io_csrMMU_storePF),
     .io_csrMMU_addr          (_dtlb_io_csrMMU_addr),
     .io_cacheEmpty           (_io_dmem_cache_io_empty),	// src/main/scala/nutcore/mem/Cache.scala:668:35
-    .satp__bore              (_backend_exu_csr_satp__bore_0),	// src/main/scala/nutcore/NutCore.scala:146:25
     ._WIRE__bore             (_dtlb__WIRE__bore),
+    .flushTLB__bore          (_backend_exu_mou__WIRE_1__bore_1),	// src/main/scala/nutcore/NutCore.scala:146:25
+    .satp__bore              (_backend_exu_csr_satp__bore_0),	// src/main/scala/nutcore/NutCore.scala:146:25
+    .tlbExec_isAMO__bore     (_backend_exu_lsu__WIRE__bore),	// src/main/scala/nutcore/NutCore.scala:146:25
     ._WIRE_1__bore           (_dtlb__WIRE_1__bore),
     ._WIRE_1__bore_0         (_dtlb__WIRE_1__bore_0),
-    .tlbExec_isAMO__bore     (_backend_exu_lsu__WIRE__bore),	// src/main/scala/nutcore/NutCore.scala:146:25
-    .flushTLB__bore          (_backend_exu_mou__WIRE_1__bore_1),	// src/main/scala/nutcore/NutCore.scala:146:25
     ._WIRE_2__bore           (_dtlb__WIRE_2__bore),
     ._WIRE_2__bore_1         (_dtlb__WIRE_2__bore_1)
   );

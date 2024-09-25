@@ -108,21 +108,21 @@ module UnpipelinedLSU(	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala
                 io_dtlbPF,	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:37:14
                 io_loadAddrMisaligned,	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:37:14
                 io_storeAddrMisaligned,	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:37:14
-  input  [63:0] lrAddr__bore,
-  output [63:0] setLrAddr__bore,
-  input         lr__bore,
-  output        lsExecUnit_r1__bore,
+                lsExecUnit_r_bore,
   input         lsExecUnit_dtlbFinish__bore,
-                lsExecUnit_dtlbPF__bore,
-                dtlbPF__bore,
-  output        _WIRE__bore,
-  output [63:0] lsExecUnit_io_in_bits_src1__bore,
-  output        setLr__bore,
-  input         lsuMMIO__bore,
-  output        lsExecUnit__WIRE__bore,
-  input         lsExecUnit_dtlbEnable__bore,
+  output [63:0] setLrAddr__bore,
   output        setLrVal__bore,
-                lsExecUnit_r_bore
+  input         lsuMMIO__bore,
+                lr__bore,
+  output        lsExecUnit__WIRE__bore,
+                setLr__bore,
+  output [63:0] lsExecUnit_io_in_bits_src1__bore,
+  input  [63:0] lrAddr__bore,
+  output        _WIRE__bore,
+  input         lsExecUnit_dtlbPF__bore,
+                dtlbPF__bore,
+  output        lsExecUnit_r1__bore,
+  input         lsExecUnit_dtlbEnable__bore
 );
 
   wire        _GEN;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:128:20, :142:38, :160:36, :185:36
@@ -327,14 +327,14 @@ module UnpipelinedLSU(	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala
     .io_dtlbPF               (io_dtlbPF),
     .io_loadAddrMisaligned   (_lsExecUnit_io_loadAddrMisaligned),
     .io_storeAddrMisaligned  (_lsExecUnit_io_storeAddrMisaligned),
-    .r_1__bore               (lsExecUnit_r1__bore),
+    .r__bore                 (lsExecUnit_r_bore),
     .dtlbFinish__bore        (lsExecUnit_dtlbFinish__bore),
-    .dtlbPF__bore            (lsExecUnit_dtlbPF__bore),
-    .isAMO__bore             (_GEN_1),	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:60:35
-    .io_in_bits_src1__bore   (lsExecUnit_io_in_bits_src1__bore),
     ._WIRE__bore             (lsExecUnit__WIRE__bore),
-    .dtlbEnable__bore        (lsExecUnit_dtlbEnable__bore),
-    .r__bore                 (lsExecUnit_r_bore)
+    .io_in_bits_src1__bore   (lsExecUnit_io_in_bits_src1__bore),
+    .isAMO__bore             (_GEN_1),	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:60:35
+    .dtlbPF__bore            (lsExecUnit_dtlbPF__bore),
+    .r_1__bore               (lsExecUnit_r1__bore),
+    .dtlbEnable__bore        (lsExecUnit_dtlbEnable__bore)
   );
   AtomALU atomALU (	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:98:25
     .io_src1     (atomMemReg),	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:96:25
@@ -386,8 +386,8 @@ module UnpipelinedLSU(	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala
   assign io_loadAddrMisaligned = _lsExecUnit_io_loadAddrMisaligned;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:36:7, :47:28
   assign io_storeAddrMisaligned = _lsExecUnit_io_storeAddrMisaligned;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:36:7, :47:28
   assign setLrAddr__bore = setLrAddr;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:36:7, :72:25
-  assign _WIRE__bore = _GEN_0;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:36:7, :58:37
-  assign setLr__bore = setLr;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:36:7, :70:21
   assign setLrVal__bore = setLrVal;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:36:7, :71:24
+  assign setLr__bore = setLr;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:36:7, :70:21
+  assign _WIRE__bore = _GEN_0;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:36:7, :58:37
 endmodule
 

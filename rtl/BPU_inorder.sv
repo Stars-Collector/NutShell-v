@@ -94,8 +94,8 @@ module BPU_inorder(	// src/main/scala/nutcore/frontend/BPU.scala:280:7
   input         io_flush,	// src/main/scala/nutcore/frontend/BPU.scala:281:14
   output [2:0]  io_brIdx,	// src/main/scala/nutcore/frontend/BPU.scala:281:14
   output        io_crosslineJump,	// src/main/scala/nutcore/frontend/BPU.scala:281:14
-  input         flushBTB__bore,
-                flushTLB__bore,
+  input         flushTLB__bore,
+                flushBTB__bore,
                 req__bore_valid,
   input  [38:0] req__bore_pc,
   input         req__bore_isMissPredict,

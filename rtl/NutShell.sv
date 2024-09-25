@@ -341,10 +341,10 @@ module NutShell(	// src/main/scala/system/NutShell.scala:44:7
     .io_frontend_resp_valid      (_nutcore_io_frontend_resp_valid),
     .io_frontend_resp_bits_cmd   (_nutcore_io_frontend_resp_bits_cmd),
     .io_frontend_resp_bits_rdata (_nutcore_io_frontend_resp_bits_rdata),
-    .backend_exu_csr_mtip__bore  (_clint_io_extra_mtip__bore),	// src/main/scala/system/NutShell.scala:113:21
-    .backend_exu_csr_msip__bore  (_clint_io_extra_msip__bore),	// src/main/scala/system/NutShell.scala:113:21
     .backend_exu_csr_meip__bore  (_plic_io_extra_meip_0__bore),	// src/main/scala/system/NutShell.scala:120:20
-    .frontend_idu__WIRE__bore    (_nutcore_frontend_idu__WIRE__bore)
+    .backend_exu_csr_mtip__bore  (_clint_io_extra_mtip__bore),	// src/main/scala/system/NutShell.scala:113:21
+    .frontend_idu__WIRE__bore    (_nutcore_frontend_idu__WIRE__bore),
+    .backend_exu_csr_msip__bore  (_clint_io_extra_msip__bore)	// src/main/scala/system/NutShell.scala:113:21
   );
   CoherenceManager cohMg (	// src/main/scala/system/NutShell.scala:54:21
     .clock                      (clock),
@@ -587,8 +587,8 @@ module NutShell(	// src/main/scala/system/NutShell.scala:44:7
     .io_extra_mtip       (/* unused */),
     .io_extra_msip       (/* unused */),
     .io_extra_mtip__bore (_clint_io_extra_mtip__bore),
-    .io_extra_msip__bore (_clint_io_extra_msip__bore),
-    .isWFI__bore         (_nutcore_frontend_idu__WIRE__bore)	// src/main/scala/system/NutShell.scala:53:23
+    .isWFI__bore         (_nutcore_frontend_idu__WIRE__bore),	// src/main/scala/system/NutShell.scala:53:23
+    .io_extra_msip__bore (_clint_io_extra_msip__bore)
   );
   SimpleBus2AXI4Converter_1 clint_io_in_bridge (	// src/main/scala/bus/simplebus/ToAXI4.scala:204:24
     .clock                 (clock),

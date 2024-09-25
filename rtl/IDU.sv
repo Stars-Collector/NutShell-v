@@ -139,9 +139,9 @@ module IDU(	// src/main/scala/nutcore/frontend/IDU.scala:193:7
                 io_out_1_bits_cf_intrVec_9,	// src/main/scala/nutcore/frontend/IDU.scala:194:14
                 io_out_1_bits_cf_intrVec_10,	// src/main/scala/nutcore/frontend/IDU.scala:194:14
                 io_out_1_bits_cf_intrVec_11,	// src/main/scala/nutcore/frontend/IDU.scala:194:14
+                _WIRE__bore,
   input  [11:0] decoder1_intrVec__bore,
                 decoder2_intrVec__bore,
-  output        _WIRE__bore,
   input         decoder1_vmEnable__bore
 );
 

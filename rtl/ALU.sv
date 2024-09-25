@@ -100,22 +100,16 @@ module ALU(	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7
   output [38:0] io_redirect_target,	// src/main/scala/nutcore/backend/fu/ALU.scala:76:14
   output        io_redirect_valid,	// src/main/scala/nutcore/backend/fu/ALU.scala:76:14
   input  [63:0] io_offset,	// src/main/scala/nutcore/backend/fu/ALU.scala:76:14
-  output        _WIRE_8__bore,
-                _WIRE_9__bore,
-                _WIRE_16__bore,
-                _WIRE_7__bore,
-                _WIRE_10__bore,
-                _WIRE_6__bore,
-                _WIRE_11__bore,
-                _WIRE_1__bore,
-                _WIRE_5__bore,
-                _WIRE_12__bore,
-                _WIRE_2__bore,
-                _WIRE_4__bore,
-                _WIRE_13__bore,
+  output        _WIRE_10__bore,
                 _WIRE_3__bore,
+                _WIRE_2__bore,
+                _WIRE_9__bore,
+                _WIRE_5__bore,
+                _WIRE_11__bore,
+                _WIRE_4__bore,
+                _WIRE_16__bore,
                 _WIRE_14__bore,
-                _WIRE_15__bore,
+                _WIRE_6__bore,
                 REG__bore_valid,
   output [38:0] REG__bore_pc,
   output        REG__bore_isMissPredict,
@@ -123,7 +117,13 @@ module ALU(	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7
   output        REG__bore_actualTaken,
   output [6:0]  REG__bore_fuOpType,
   output [1:0]  REG__bore_btbType,
-  output        REG__bore_isRVC
+  output        REG__bore_isRVC,
+                _WIRE_15__bore,
+                _WIRE_12__bore,
+                _WIRE_8__bore,
+                _WIRE_13__bore,
+                _WIRE_7__bore,
+                _WIRE_1__bore
 );
 
   wire [38:0]  io_redirect_target_0;	// src/main/scala/nutcore/backend/fu/ALU.scala:124:28
@@ -316,22 +316,16 @@ module ALU(	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7
       : io_in_bits_func[5] ? {{32{res[31]}}, res[31:0]} : res;	// src/main/scala/nutcore/backend/fu/ALU.scala:45:34, :62:31, :75:7, :108:{19,57}, :121:{29,35}, :132:{21,32,71,108}, src/main/scala/utils/BitUtils.scala:41:20, :42:46, src/main/scala/utils/LookupTree.scala:29:28
   assign io_redirect_target = io_redirect_target_0;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :124:28
   assign io_redirect_valid = io_redirect_valid_0;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :126:39
-  assign _WIRE_8__bore = _GEN_17;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :170:35
-  assign _WIRE_9__bore = _GEN_19;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :171:35
-  assign _WIRE_16__bore = _GEN_26;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :178:35
-  assign _WIRE_7__bore = _GEN_16;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :169:35
   assign _WIRE_10__bore = _GEN_20;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :172:35
-  assign _WIRE_6__bore = _GEN_14;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :168:35
-  assign _WIRE_11__bore = _GEN_21;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :173:35
-  assign _WIRE_1__bore = _GEN_7;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :163:35
-  assign _WIRE_5__bore = _GEN_13;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :167:35
-  assign _WIRE_12__bore = _GEN_22;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :174:35
-  assign _WIRE_2__bore = _GEN_8;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :164:35
-  assign _WIRE_4__bore = _GEN_11;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :166:35
-  assign _WIRE_13__bore = _GEN_23;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :175:35
   assign _WIRE_3__bore = _GEN_10;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :165:35
+  assign _WIRE_2__bore = _GEN_8;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :164:35
+  assign _WIRE_9__bore = _GEN_19;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :171:35
+  assign _WIRE_5__bore = _GEN_13;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :167:35
+  assign _WIRE_11__bore = _GEN_21;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :173:35
+  assign _WIRE_4__bore = _GEN_11;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :166:35
+  assign _WIRE_16__bore = _GEN_26;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :178:35
   assign _WIRE_14__bore = _GEN_24;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :176:35
-  assign _WIRE_15__bore = _GEN_25;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :177:35
+  assign _WIRE_6__bore = _GEN_14;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :168:35
   assign REG__bore_valid = REG_valid;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :159:34
   assign REG__bore_pc = REG_pc;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :159:34
   assign REG__bore_isMissPredict = REG_isMissPredict;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :159:34
@@ -340,5 +334,11 @@ module ALU(	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7
   assign REG__bore_fuOpType = REG_fuOpType;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :159:34
   assign REG__bore_btbType = REG_btbType;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :159:34
   assign REG__bore_isRVC = REG_isRVC;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :159:34
+  assign _WIRE_15__bore = _GEN_25;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :177:35
+  assign _WIRE_12__bore = _GEN_22;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :174:35
+  assign _WIRE_8__bore = _GEN_17;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :170:35
+  assign _WIRE_13__bore = _GEN_23;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :175:35
+  assign _WIRE_7__bore = _GEN_16;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :169:35
+  assign _WIRE_1__bore = _GEN_7;	// src/main/scala/nutcore/backend/fu/ALU.scala:75:7, :163:35
 endmodule
 

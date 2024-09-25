@@ -138,41 +138,41 @@ module Backend_inorder(	// src/main/scala/nutcore/backend/ooo/Backend.scala:668:
   input  [38:0] io_memMMU_dmem_addr,	// src/main/scala/nutcore/backend/ooo/Backend.scala:669:14
   output [38:0] io_redirect_target,	// src/main/scala/nutcore/backend/ooo/Backend.scala:669:14
   output        io_redirect_valid,	// src/main/scala/nutcore/backend/ooo/Backend.scala:669:14
-  output [63:0] exu_csr_satp__bore,
-                exu_csr_satp__bore_0,
-  output [11:0] exu_csr__WIRE__bore,
-                exu_csr__WIRE__bore_0,
-  input         exu_csr_mtip__bore,
+  input         exu_csr_perfCntCond_15__bore,
                 exu_lsu_lsExecUnit_dtlbFinish__bore,
-                exu_lsu_lsExecUnit_dtlbPF__bore,
-                exu_lsu_dtlbPF__bore,
-  output        exu_mou__WIRE__bore,
-                exu_mou__WIRE__bore_0,
-  input         exu_csr_msip__bore,
-                exu_csr_meip__bore,
-                exu_csr_perfCntCond_15__bore,
-  output        exu_lsu__WIRE__bore,
-                exu_mou__WIRE_1__bore,
+  output        exu_mou__WIRE_1__bore,
                 exu_mou__WIRE_1__bore_0,
                 exu_mou__WIRE_1__bore_1,
-  input         exu_csr_perfCntCond_4__bore,
-                exu_lsu_lsuMMIO__bore,
-                exu_lsu_lsExecUnit_dtlbEnable__bore,
-  output        exu_alu_REG__bore_valid,
+  input         exu_lsu_lsuMMIO__bore,
+                exu_csr_meip__bore,
+                exu_csr_mtip__bore,
+                exu_csr_perfCntCond_4__bore,
+  output [63:0] exu_csr_satp__bore,
+                exu_csr_satp__bore_0,
+  output        exu_mou__WIRE__bore,
+                exu_mou__WIRE__bore_0,
+                exu_lsu__WIRE__bore,
+                exu_alu_REG__bore_valid,
   output [38:0] exu_alu_REG__bore_pc,
   output        exu_alu_REG__bore_isMissPredict,
   output [38:0] exu_alu_REG__bore_actualTarget,
   output        exu_alu_REG__bore_actualTaken,
   output [6:0]  exu_alu_REG__bore_fuOpType,
   output [1:0]  exu_alu_REG__bore_btbType,
-  output        exu_alu_REG__bore_isRVC
+  output        exu_alu_REG__bore_isRVC,
+  input         exu_lsu_lsExecUnit_dtlbPF__bore,
+                exu_lsu_dtlbPF__bore,
+                exu_csr_msip__bore,
+  output [11:0] exu_csr__WIRE__bore,
+                exu_csr__WIRE__bore_0,
+  input         exu_lsu_lsExecUnit_dtlbEnable__bore
 );
 
   wire        _wbu_io_wb_rfWen;	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
   wire [4:0]  _wbu_io_wb_rfDest;	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
   wire [63:0] _wbu_io_wb_rfData;	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
-  wire        _wbu_falseWire__bore;	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
   wire        _wbu_io_in_valid__bore;	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
+  wire        _wbu_falseWire__bore;	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
   wire        _exu_io_in_ready;	// src/main/scala/nutcore/backend/ooo/Backend.scala:679:20
   wire        _exu_io_out_valid;	// src/main/scala/nutcore/backend/ooo/Backend.scala:679:20
   wire [63:0] _exu_io_out_bits_decode_cf_instr;	// src/main/scala/nutcore/backend/ooo/Backend.scala:679:20
@@ -223,8 +223,8 @@ module Backend_inorder(	// src/main/scala/nutcore/backend/ooo/Backend.scala:668:
   wire [63:0] _isu_io_out_bits_data_src2;	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
   wire [63:0] _isu_io_out_bits_data_imm;	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
   wire        _isu__WIRE_1__bore;	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
-  wire        _isu__WIRE_2__bore;	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
   wire        _isu__WIRE__bore;	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
+  wire        _isu__WIRE_2__bore;	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
   reg         valid;	// src/main/scala/utils/Pipeline.scala:24:24
   reg  [63:0] exu_io_in_bits_rcf_instr;	// src/main/scala/utils/Pipeline.scala:30:28
   reg  [38:0] exu_io_in_bits_rcf_pc;	// src/main/scala/utils/Pipeline.scala:30:28
@@ -520,8 +520,8 @@ module Backend_inorder(	// src/main/scala/nutcore/backend/ooo/Backend.scala:668:
     .io_forward_fuType               (_exu_io_forward_fuType),	// src/main/scala/nutcore/backend/ooo/Backend.scala:679:20
     .io_flush                        (io_flush[0]),	// src/main/scala/nutcore/backend/ooo/Backend.scala:682:67
     ._WIRE_1__bore                   (_isu__WIRE_1__bore),
-    ._WIRE_2__bore                   (_isu__WIRE_2__bore),
-    ._WIRE__bore                     (_isu__WIRE__bore)
+    ._WIRE__bore                     (_isu__WIRE__bore),
+    ._WIRE_2__bore                   (_isu__WIRE_2__bore)
   );
   EXU exu (	// src/main/scala/nutcore/backend/ooo/Backend.scala:679:20
     .clock                                 (clock),
@@ -603,31 +603,23 @@ module Backend_inorder(	// src/main/scala/nutcore/backend/ooo/Backend.scala:668:
     .io_memMMU_dmem_loadPF                 (io_memMMU_dmem_loadPF),
     .io_memMMU_dmem_storePF                (io_memMMU_dmem_storePF),
     .io_memMMU_dmem_addr                   (io_memMMU_dmem_addr),
-    .csr_perfCntCond_50__bore              (_isu__WIRE_1__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
-    .csr_satp__bore                        (exu_csr_satp__bore),
-    .csr_satp__bore_0                      (exu_csr_satp__bore_0),
-    .csr_perfCntCond_53__bore              (_isu__WIRE_2__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
-    .csr__WIRE__bore                       (exu_csr__WIRE__bore),
-    .csr__WIRE__bore_0                     (exu_csr__WIRE__bore_0),
-    .csr_mtip__bore                        (exu_csr_mtip__bore),
-    .lsu_lsExecUnit_dtlbFinish__bore       (exu_lsu_lsExecUnit_dtlbFinish__bore),
-    .csr_perfCntCond_3__bore               (_wbu_falseWire__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
-    .lsu_lsExecUnit_dtlbPF__bore           (exu_lsu_lsExecUnit_dtlbPF__bore),
-    .lsu_dtlbPF__bore                      (exu_lsu_dtlbPF__bore),
-    .mou__WIRE__bore                       (exu_mou__WIRE__bore),
-    .mou__WIRE__bore_0                     (exu_mou__WIRE__bore_0),
-    .csr_msip__bore                        (exu_csr_msip__bore),
-    .csr_meip__bore                        (exu_csr_meip__bore),
+    .csr_perfCntCond_2__bore               (_wbu_io_in_valid__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
     .csr_perfCntCond_15__bore              (exu_csr_perfCntCond_15__bore),
-    .lsu__WIRE__bore                       (exu_lsu__WIRE__bore),
-    .csr_perfCntCond_49__bore              (_isu__WIRE__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
+    .csr_perfCntCond_50__bore              (_isu__WIRE_1__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
+    .lsu_lsExecUnit_dtlbFinish__bore       (exu_lsu_lsExecUnit_dtlbFinish__bore),
     .mou__WIRE_1__bore                     (exu_mou__WIRE_1__bore),
     .mou__WIRE_1__bore_0                   (exu_mou__WIRE_1__bore_0),
     .mou__WIRE_1__bore_1                   (exu_mou__WIRE_1__bore_1),
-    .csr_perfCntCond_4__bore               (exu_csr_perfCntCond_4__bore),
-    .csr_perfCntCond_2__bore               (_wbu_io_in_valid__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
     .lsu_lsuMMIO__bore                     (exu_lsu_lsuMMIO__bore),
-    .lsu_lsExecUnit_dtlbEnable__bore       (exu_lsu_lsExecUnit_dtlbEnable__bore),
+    .csr_perfCntCond_49__bore              (_isu__WIRE__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
+    .csr_meip__bore                        (exu_csr_meip__bore),
+    .csr_mtip__bore                        (exu_csr_mtip__bore),
+    .csr_perfCntCond_4__bore               (exu_csr_perfCntCond_4__bore),
+    .csr_satp__bore                        (exu_csr_satp__bore),
+    .csr_satp__bore_0                      (exu_csr_satp__bore_0),
+    .mou__WIRE__bore                       (exu_mou__WIRE__bore),
+    .mou__WIRE__bore_0                     (exu_mou__WIRE__bore_0),
+    .lsu__WIRE__bore                       (exu_lsu__WIRE__bore),
     .alu_REG__bore_valid                   (exu_alu_REG__bore_valid),
     .alu_REG__bore_pc                      (exu_alu_REG__bore_pc),
     .alu_REG__bore_isMissPredict           (exu_alu_REG__bore_isMissPredict),
@@ -635,7 +627,15 @@ module Backend_inorder(	// src/main/scala/nutcore/backend/ooo/Backend.scala:668:
     .alu_REG__bore_actualTaken             (exu_alu_REG__bore_actualTaken),
     .alu_REG__bore_fuOpType                (exu_alu_REG__bore_fuOpType),
     .alu_REG__bore_btbType                 (exu_alu_REG__bore_btbType),
-    .alu_REG__bore_isRVC                   (exu_alu_REG__bore_isRVC)
+    .alu_REG__bore_isRVC                   (exu_alu_REG__bore_isRVC),
+    .lsu_lsExecUnit_dtlbPF__bore           (exu_lsu_lsExecUnit_dtlbPF__bore),
+    .lsu_dtlbPF__bore                      (exu_lsu_dtlbPF__bore),
+    .csr_msip__bore                        (exu_csr_msip__bore),
+    .csr__WIRE__bore                       (exu_csr__WIRE__bore),
+    .csr__WIRE__bore_0                     (exu_csr__WIRE__bore_0),
+    .lsu_lsExecUnit_dtlbEnable__bore       (exu_lsu_lsExecUnit_dtlbEnable__bore),
+    .csr_perfCntCond_53__bore              (_isu__WIRE_2__bore),	// src/main/scala/nutcore/backend/ooo/Backend.scala:678:20
+    .csr_perfCntCond_3__bore               (_wbu_falseWire__bore)	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
   );
   WBU wbu (	// src/main/scala/nutcore/backend/ooo/Backend.scala:680:20
     .clock                                (clock),
@@ -659,8 +659,8 @@ module Backend_inorder(	// src/main/scala/nutcore/backend/ooo/Backend.scala:668:
     .io_wb_rfData                         (_wbu_io_wb_rfData),
     .io_redirect_target                   (io_redirect_target),
     .io_redirect_valid                    (io_redirect_valid),
-    .falseWire__bore                      (_wbu_falseWire__bore),
-    .io_in_valid__bore                    (_wbu_io_in_valid__bore)
+    .io_in_valid__bore                    (_wbu_io_in_valid__bore),
+    .falseWire__bore                      (_wbu_falseWire__bore)
   );
 endmodule
 

@@ -106,8 +106,8 @@ module WBU(	// src/main/scala/nutcore/backend/seq/WBU.scala:25:7
   output [63:0] io_wb_rfData,	// src/main/scala/nutcore/backend/seq/WBU.scala:26:14
   output [38:0] io_redirect_target,	// src/main/scala/nutcore/backend/seq/WBU.scala:26:14
   output        io_redirect_valid,	// src/main/scala/nutcore/backend/seq/WBU.scala:26:14
-                falseWire__bore,
-                io_in_valid__bore
+                io_in_valid__bore,
+                falseWire__bore
 );
 
   wire             _difftest_wb_sink_delayer_o_valid;	// difftest/src/main/scala/Difftest.scala:541:15
@@ -204,7 +204,7 @@ module WBU(	// src/main/scala/nutcore/backend/seq/WBU.scala:25:7
   assign io_wb_rfData = _GEN[io_in_bits_decode_ctrl_fuType];	// src/main/scala/nutcore/backend/seq/WBU.scala:25:7, :34:16
   assign io_redirect_target = io_in_bits_decode_cf_redirect_target;	// src/main/scala/nutcore/backend/seq/WBU.scala:25:7
   assign io_redirect_valid = io_in_bits_decode_cf_redirect_valid & io_in_valid;	// src/main/scala/nutcore/backend/seq/WBU.scala:25:7, :39:60
-  assign falseWire__bore = falseWire;	// src/main/scala/nutcore/backend/seq/WBU.scala:25:7, :43:27
   assign io_in_valid__bore = io_in_valid;	// src/main/scala/nutcore/backend/seq/WBU.scala:25:7
+  assign falseWire__bore = falseWire;	// src/main/scala/nutcore/backend/seq/WBU.scala:25:7, :43:27
 endmodule
 

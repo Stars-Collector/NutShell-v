@@ -159,8 +159,8 @@ module ISU(	// src/main/scala/nutcore/backend/seq/ISU.scala:27:7
   input  [2:0]  io_forward_fuType,	// src/main/scala/nutcore/backend/seq/ISU.scala:28:14
   input         io_flush,	// src/main/scala/nutcore/backend/seq/ISU.scala:28:14
   output        _WIRE_1__bore,
-                _WIRE_2__bore,
-                _WIRE__bore
+                _WIRE__bore,
+                _WIRE_2__bore
 );
 
   wire [63:0] _LogPerfHelper_timer;	// difftest/src/main/scala/common/LogPerfControl.scala:60:79
@@ -495,7 +495,7 @@ module ISU(	// src/main/scala/nutcore/backend/seq/ISU.scala:27:7
   assign io_out_bits_data_src2 = _io_out_bits_data_src2_T_16;	// src/main/scala/chisel3/util/Mux.scala:30:73, src/main/scala/nutcore/backend/seq/ISU.scala:27:7
   assign io_out_bits_data_imm = io_in_0_bits_data_imm;	// src/main/scala/nutcore/backend/seq/ISU.scala:27:7
   assign _WIRE_1__bore = _GEN_1;	// src/main/scala/nutcore/backend/seq/ISU.scala:27:7, :98:33
-  assign _WIRE_2__bore = _GEN;	// src/main/scala/nutcore/backend/seq/ISU.scala:27:7, :99:33
   assign _WIRE__bore = _GEN_0;	// src/main/scala/nutcore/backend/seq/ISU.scala:27:7, :97:33
+  assign _WIRE_2__bore = _GEN;	// src/main/scala/nutcore/backend/seq/ISU.scala:27:7, :99:33
 endmodule
 

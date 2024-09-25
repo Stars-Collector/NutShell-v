@@ -116,8 +116,8 @@ module EmbeddedTLB(	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:79:7
   input  [1:0]  io_csrMMU_privilegeMode,	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:37:14
   input         io_cacheEmpty,	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:37:14
   output        io_ipf,	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:37:14
-  input  [63:0] satp__bore,
-  input         flushTLB__bore
+  input         flushTLB__bore,
+  input  [63:0] satp__bore
 );
 
   wire [63:0]  _LogPerfHelper_timer;	// difftest/src/main/scala/common/LogPerfControl.scala:60:79

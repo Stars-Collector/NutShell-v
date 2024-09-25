@@ -92,11 +92,11 @@ module MOU(	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7
   input  [38:0] io_cfIn_pc,	// src/main/scala/nutcore/backend/fu/MOU.scala:38:14
   output [38:0] io_redirect_target,	// src/main/scala/nutcore/backend/fu/MOU.scala:38:14
   output        io_redirect_valid,	// src/main/scala/nutcore/backend/fu/MOU.scala:38:14
-                _WIRE__bore,
-                _WIRE__bore_0,
                 _WIRE_1__bore,
                 _WIRE_1__bore_0,
-                _WIRE_1__bore_1
+                _WIRE_1__bore_1,
+                _WIRE__bore,
+                _WIRE__bore_0
 );
 
   wire [63:0] _LogPerfHelper_timer;	// difftest/src/main/scala/common/LogPerfControl.scala:60:79
@@ -123,10 +123,10 @@ module MOU(	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7
   );
   assign io_redirect_target = io_cfIn_pc + 39'h4;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7, :49:36
   assign io_redirect_valid = io_in_valid;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7
-  assign _WIRE__bore = _GEN;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7, :53:33
-  assign _WIRE__bore_0 = _GEN;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7, :53:33
   assign _WIRE_1__bore = _GEN_0;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7, :57:33
   assign _WIRE_1__bore_0 = _GEN_0;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7, :57:33
   assign _WIRE_1__bore_1 = _GEN_0;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7, :57:33
+  assign _WIRE__bore = _GEN;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7, :53:33
+  assign _WIRE__bore_0 = _GEN;	// src/main/scala/nutcore/backend/fu/MOU.scala:37:7, :53:33
 endmodule
 

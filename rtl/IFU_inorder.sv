@@ -106,11 +106,11 @@ module IFU_inorder(	// src/main/scala/nutcore/frontend/IFU.scala:309:7
   input         io_redirect_valid,	// src/main/scala/nutcore/frontend/IFU.scala:310:14
   output [3:0]  io_flushVec,	// src/main/scala/nutcore/frontend/IFU.scala:310:14
   input         io_ipf,	// src/main/scala/nutcore/frontend/IFU.scala:310:14
-                bp1_flushBTB__bore,
   output        _WIRE__bore,
   input         bp1_flushTLB__bore,
   output        r__bore,
-  input         bp1_req__bore_valid,
+  input         bp1_flushBTB__bore,
+                bp1_req__bore_valid,
   input  [38:0] bp1_req__bore_pc,
   input         bp1_req__bore_isMissPredict,
   input  [38:0] bp1_req__bore_actualTarget,
@@ -238,8 +238,8 @@ module IFU_inorder(	// src/main/scala/nutcore/frontend/IFU.scala:309:7
     .io_flush                (io_redirect_valid),
     .io_brIdx                (_bp1_io_brIdx),
     .io_crosslineJump        (_bp1_io_crosslineJump),
-    .flushBTB__bore          (bp1_flushBTB__bore),
     .flushTLB__bore          (bp1_flushTLB__bore),
+    .flushBTB__bore          (bp1_flushBTB__bore),
     .req__bore_valid         (bp1_req__bore_valid),
     .req__bore_pc            (bp1_req__bore_pc),
     .req__bore_isMissPredict (bp1_req__bore_isMissPredict),

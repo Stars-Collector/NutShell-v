@@ -136,54 +136,54 @@ module CSR(	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7
                 io_dmemMMU_storePF,	// src/main/scala/nutcore/backend/fu/CSR.scala:193:14
   input  [38:0] io_dmemMMU_addr,	// src/main/scala/nutcore/backend/fu/CSR.scala:193:14
   output        io_wenFix,	// src/main/scala/nutcore/backend/fu/CSR.scala:193:14
-  input         perfCntCond_50__bore,
+  input         perfCntCond_2__bore,
+                perfCntCond_32__bore,
+                perfCntCond_15__bore,
+                perfCntCond_50__bore,
+                perfCntCond_25__bore,
+                perfCntCond_51__bore,
+                perfCntCond_7__bore,
+  input  [63:0] setLrAddr__bore,
+  input         setLrVal__bore,
+                perfCntCond_6__bore,
+                perfCntCond_49__bore,
+                perfCntCond_17__bore,
+                perfCntCond_31__bore,
+                meip__bore,
+                nutcoretrap__bore,
+                mtip__bore,
+  output        lr__bore,
+  input         perfCntCond_10__bore,
+  output [63:0] perfCnts_0__bore,
+  input         setLr__bore,
+                perfCntCond_27__bore,
+                perfCntCond_4__bore,
+  input  [63:0] lsuAddr__bore,
   output [63:0] lrAddr__bore,
-  input         perfCntCond_30__bore,
-                perfCntCond_8__bore,
+  input         perfCntCond_14__bore,
+                perfCntCond_5__bore,
+                perfCntCond_18__bore,
+                perfCntCond_26__bore,
   output [63:0] satp__bore,
                 satp__bore_0,
-  input         perfCntCond_31__bore,
-  input  [63:0] setLrAddr__bore,
-  output        lr__bore,
-  input         perfCntCond_53__bore,
-                perfCntCond_52__bore,
-                perfCntCond_23__bore,
+  input         perfCntCond_23__bore,
+  output [63:0] perfCnts_2__bore,
+  input         perfCntCond_21__bore,
+                perfCntCond_28__bore,
+                perfCntCond_8__bore,
+                perfCntCond_22__bore,
+                msip__bore,
+                perfCntCond_9__bore,
+                perfCntCond_19__bore,
   output [11:0] _WIRE__bore,
                 _WIRE__bore_0,
-  input         perfCntCond_29__bore,
-                perfCntCond_32__bore,
-                mtip__bore,
-                perfCntCond_3__bore,
-                perfCntCond_28__bore,
-                perfCntCond_18__bore,
-                msip__bore,
-                perfCntCond_14__bore,
-                meip__bore,
-                perfCntCond_9__bore,
-                perfCntCond_15__bore,
-                perfCntCond_7__bore,
-                perfCntCond_16__bore,
-                perfCntCond_49__bore,
-                perfCntCond_27__bore,
-                perfCntCond_19__bore,
-                perfCntCond_5__bore,
-                perfCntCond_17__bore,
-  input  [63:0] lsuAddr__bore,
-  input         perfCntCond_26__bore,
-                perfCntCond_6__bore,
-                nutcoretrap__bore,
-                perfCntCond_4__bore,
-                setLr__bore,
-                perfCntCond_2__bore,
+  input         perfCntCond_30__bore,
+                perfCntCond_52__bore,
                 perfCntCond_20__bore,
-                perfCntCond_25__bore,
-  output [63:0] perfCnts_0__bore,
-  input         perfCntCond_10__bore,
-                perfCntCond_21__bore,
-  output [63:0] perfCnts_2__bore,
-  input         setLrVal__bore,
-                perfCntCond_22__bore,
-                perfCntCond_51__bore
+                perfCntCond_53__bore,
+                perfCntCond_29__bore,
+                perfCntCond_3__bore,
+                perfCntCond_16__bore
 );
 
   wire [38:0] retTarget;	// src/main/scala/nutcore/backend/fu/CSR.scala:695:26, :708:26, :716:15
@@ -1982,13 +1982,13 @@ module CSR(	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7
   assign io_dmemMMU_status_sum = mstatus[18];	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :278:24, :314:39
   assign io_dmemMMU_status_mxr = mstatus[19];	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :278:24, :314:39
   assign io_wenFix = |_GEN_4;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :648:50, :649:42
+  assign lr__bore = lr;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :377:19
+  assign perfCnts_0__bore = perfCnts_0;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :396:47
   assign lrAddr__bore = lrAddr;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :378:23
   assign satp__bore = satp;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :359:21
   assign satp__bore_0 = satp;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :359:21
-  assign lr__bore = lr;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :377:19
+  assign perfCnts_2__bore = perfCnts_2;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :396:47
   assign _WIRE__bore = _GEN_3;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :628:33
   assign _WIRE__bore_0 = _GEN_3;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :628:33
-  assign perfCnts_0__bore = perfCnts_0;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :396:47
-  assign perfCnts_2__bore = perfCnts_2;	// src/main/scala/nutcore/backend/fu/CSR.scala:192:7, :396:47
 endmodule
 

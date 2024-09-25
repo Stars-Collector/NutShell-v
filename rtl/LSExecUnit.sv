@@ -107,14 +107,14 @@ module LSExecUnit(	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289
                 io_dtlbPF,	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:290:14
                 io_loadAddrMisaligned,	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:290:14
                 io_storeAddrMisaligned,	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:290:14
-                r_1__bore,
+                r__bore,
   input         dtlbFinish__bore,
-                dtlbPF__bore,
-                isAMO__bore,
-  output [63:0] io_in_bits_src1__bore,
   output        _WIRE__bore,
-  input         dtlbEnable__bore,
-  output        r__bore
+  output [63:0] io_in_bits_src1__bore,
+  input         isAMO__bore,
+                dtlbPF__bore,
+  output        r_1__bore,
+  input         dtlbEnable__bore
 );
 
   wire        io_storeAddrMisaligned_0;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:430:57
@@ -289,9 +289,9 @@ module LSExecUnit(	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289
   assign io_dtlbPF = dtlbPF__bore;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7
   assign io_loadAddrMisaligned = io_loadAddrMisaligned_0;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7, :429:57
   assign io_storeAddrMisaligned = io_storeAddrMisaligned_0;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7, :430:57
-  assign r_1__bore = r_1;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7, src/main/scala/utils/StopWatch.scala:24:20
-  assign io_in_bits_src1__bore = io_in_bits_src1;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7
-  assign _WIRE__bore = _GEN_4;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7, :434:33
   assign r__bore = r;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7, src/main/scala/utils/StopWatch.scala:24:20
+  assign _WIRE__bore = _GEN_4;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7, :434:33
+  assign io_in_bits_src1__bore = io_in_bits_src1;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7
+  assign r_1__bore = r_1;	// src/main/scala/nutcore/backend/fu/UnpipelinedLSU.scala:289:7, src/main/scala/utils/StopWatch.scala:24:20
 endmodule
 

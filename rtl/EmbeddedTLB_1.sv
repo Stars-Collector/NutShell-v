@@ -121,13 +121,13 @@ module EmbeddedTLB_1(	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:79:7
                 io_csrMMU_storePF,	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:37:14
   output [38:0] io_csrMMU_addr,	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:37:14
   input         io_cacheEmpty,	// src/main/scala/nutcore/mem/EmbeddedTLB.scala:37:14
-  input  [63:0] satp__bore,
   output        _WIRE__bore,
-                _WIRE_1__bore,
-                _WIRE_1__bore_0,
+  input         flushTLB__bore,
+  input  [63:0] satp__bore,
   input         tlbExec_isAMO__bore,
-                flushTLB__bore,
-  output        _WIRE_2__bore,
+  output        _WIRE_1__bore,
+                _WIRE_1__bore_0,
+                _WIRE_2__bore,
                 _WIRE_2__bore_1
 );
 

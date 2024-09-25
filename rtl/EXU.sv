@@ -164,39 +164,39 @@ module EXU(	// src/main/scala/nutcore/backend/seq/EXU.scala:28:7
   input         io_memMMU_dmem_loadPF,	// src/main/scala/nutcore/backend/seq/EXU.scala:29:14
                 io_memMMU_dmem_storePF,	// src/main/scala/nutcore/backend/seq/EXU.scala:29:14
   input  [38:0] io_memMMU_dmem_addr,	// src/main/scala/nutcore/backend/seq/EXU.scala:29:14
-  input         csr_perfCntCond_50__bore,
-  output [63:0] csr_satp__bore,
-                csr_satp__bore_0,
-  input         csr_perfCntCond_53__bore,
-  output [11:0] csr__WIRE__bore,
-                csr__WIRE__bore_0,
-  input         csr_mtip__bore,
-                lsu_lsExecUnit_dtlbFinish__bore,
-                csr_perfCntCond_3__bore,
-                lsu_lsExecUnit_dtlbPF__bore,
-                lsu_dtlbPF__bore,
-  output        mou__WIRE__bore,
-                mou__WIRE__bore_0,
-  input         csr_msip__bore,
-                csr_meip__bore,
+  input         csr_perfCntCond_2__bore,
                 csr_perfCntCond_15__bore,
-  output        lsu__WIRE__bore,
-  input         csr_perfCntCond_49__bore,
+                csr_perfCntCond_50__bore,
+                lsu_lsExecUnit_dtlbFinish__bore,
   output        mou__WIRE_1__bore,
                 mou__WIRE_1__bore_0,
                 mou__WIRE_1__bore_1,
-  input         csr_perfCntCond_4__bore,
-                csr_perfCntCond_2__bore,
-                lsu_lsuMMIO__bore,
-                lsu_lsExecUnit_dtlbEnable__bore,
-  output        alu_REG__bore_valid,
+  input         lsu_lsuMMIO__bore,
+                csr_perfCntCond_49__bore,
+                csr_meip__bore,
+                csr_mtip__bore,
+                csr_perfCntCond_4__bore,
+  output [63:0] csr_satp__bore,
+                csr_satp__bore_0,
+  output        mou__WIRE__bore,
+                mou__WIRE__bore_0,
+                lsu__WIRE__bore,
+                alu_REG__bore_valid,
   output [38:0] alu_REG__bore_pc,
   output        alu_REG__bore_isMissPredict,
   output [38:0] alu_REG__bore_actualTarget,
   output        alu_REG__bore_actualTaken,
   output [6:0]  alu_REG__bore_fuOpType,
   output [1:0]  alu_REG__bore_btbType,
-  output        alu_REG__bore_isRVC
+  output        alu_REG__bore_isRVC,
+  input         lsu_lsExecUnit_dtlbPF__bore,
+                lsu_dtlbPF__bore,
+                csr_msip__bore,
+  output [11:0] csr__WIRE__bore,
+                csr__WIRE__bore_0,
+  input         lsu_lsExecUnit_dtlbEnable__bore,
+                csr_perfCntCond_53__bore,
+                csr_perfCntCond_3__bore
 );
 
   wire        io_out_valid_0;	// src/main/scala/nutcore/backend/seq/EXU.scala:106:31
@@ -207,9 +207,9 @@ module EXU(	// src/main/scala/nutcore/backend/seq/EXU.scala:28:7
   wire [38:0] _csr_io_redirect_target;	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
   wire        _csr_io_redirect_valid;	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
   wire        _csr_io_wenFix;	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
-  wire [63:0] _csr_lrAddr__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
   wire        _csr_lr__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
   wire [63:0] _csr_perfCnts_0__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
+  wire [63:0] _csr_lrAddr__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
   wire [63:0] _csr_perfCnts_2__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
   wire        _mdu_io_out_valid;	// src/main/scala/nutcore/backend/seq/EXU.scala:63:19
   wire        _mdu__WIRE__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:63:19
@@ -219,33 +219,33 @@ module EXU(	// src/main/scala/nutcore/backend/seq/EXU.scala:28:7
   wire        _lsu_io_dtlbPF;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
   wire        _lsu_io_loadAddrMisaligned;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
   wire        _lsu_io_storeAddrMisaligned;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-  wire [63:0] _lsu_setLrAddr__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-  wire        _lsu_lsExecUnit_r1__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-  wire [63:0] _lsu_lsExecUnit_io_in_bits_src1__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-  wire        _lsu_setLr__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-  wire        _lsu_lsExecUnit__WIRE__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-  wire        _lsu_setLrVal__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
   wire        _lsu_lsExecUnit_r_bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+  wire [63:0] _lsu_setLrAddr__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+  wire        _lsu_setLrVal__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+  wire        _lsu_lsExecUnit__WIRE__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+  wire        _lsu_setLr__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+  wire [63:0] _lsu_lsExecUnit_io_in_bits_src1__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+  wire        _lsu_lsExecUnit_r1__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
   wire        _alu_io_out_valid;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   wire [63:0] _alu_io_out_bits;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   wire [38:0] _alu_io_redirect_target;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   wire        _alu_io_redirect_valid;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_8__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_9__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_16__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_7__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   wire        _alu__WIRE_10__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_6__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_11__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_1__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_5__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_12__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_2__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_4__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-  wire        _alu__WIRE_13__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   wire        _alu__WIRE_3__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_2__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_9__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_5__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_11__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_4__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_16__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   wire        _alu__WIRE_14__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_6__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   wire        _alu__WIRE_15__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_12__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_8__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_13__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_7__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+  wire        _alu__WIRE_1__bore;	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   wire        fuValids_1 = io_in_bits_ctrl_fuType == 3'h1 & io_in_valid & ~io_flush;	// src/main/scala/nutcore/backend/seq/EXU.scala:44:{57,81,84}
   wire        fuValids_3 = io_in_bits_ctrl_fuType == 3'h3 & io_in_valid & ~io_flush;	// src/main/scala/nutcore/backend/seq/EXU.scala:44:{57,81,84}
   `ifndef SYNTHESIS	// src/main/scala/utils/Debug.scala:49:26
@@ -287,22 +287,16 @@ module EXU(	// src/main/scala/nutcore/backend/seq/EXU.scala:28:7
     .io_redirect_target      (_alu_io_redirect_target),
     .io_redirect_valid       (_alu_io_redirect_valid),
     .io_offset               (io_in_bits_data_imm),
-    ._WIRE_8__bore           (_alu__WIRE_8__bore),
-    ._WIRE_9__bore           (_alu__WIRE_9__bore),
-    ._WIRE_16__bore          (_alu__WIRE_16__bore),
-    ._WIRE_7__bore           (_alu__WIRE_7__bore),
     ._WIRE_10__bore          (_alu__WIRE_10__bore),
-    ._WIRE_6__bore           (_alu__WIRE_6__bore),
-    ._WIRE_11__bore          (_alu__WIRE_11__bore),
-    ._WIRE_1__bore           (_alu__WIRE_1__bore),
-    ._WIRE_5__bore           (_alu__WIRE_5__bore),
-    ._WIRE_12__bore          (_alu__WIRE_12__bore),
-    ._WIRE_2__bore           (_alu__WIRE_2__bore),
-    ._WIRE_4__bore           (_alu__WIRE_4__bore),
-    ._WIRE_13__bore          (_alu__WIRE_13__bore),
     ._WIRE_3__bore           (_alu__WIRE_3__bore),
+    ._WIRE_2__bore           (_alu__WIRE_2__bore),
+    ._WIRE_9__bore           (_alu__WIRE_9__bore),
+    ._WIRE_5__bore           (_alu__WIRE_5__bore),
+    ._WIRE_11__bore          (_alu__WIRE_11__bore),
+    ._WIRE_4__bore           (_alu__WIRE_4__bore),
+    ._WIRE_16__bore          (_alu__WIRE_16__bore),
     ._WIRE_14__bore          (_alu__WIRE_14__bore),
-    ._WIRE_15__bore          (_alu__WIRE_15__bore),
+    ._WIRE_6__bore           (_alu__WIRE_6__bore),
     .REG__bore_valid         (alu_REG__bore_valid),
     .REG__bore_pc            (alu_REG__bore_pc),
     .REG__bore_isMissPredict (alu_REG__bore_isMissPredict),
@@ -310,7 +304,13 @@ module EXU(	// src/main/scala/nutcore/backend/seq/EXU.scala:28:7
     .REG__bore_actualTaken   (alu_REG__bore_actualTaken),
     .REG__bore_fuOpType      (alu_REG__bore_fuOpType),
     .REG__bore_btbType       (alu_REG__bore_btbType),
-    .REG__bore_isRVC         (alu_REG__bore_isRVC)
+    .REG__bore_isRVC         (alu_REG__bore_isRVC),
+    ._WIRE_15__bore          (_alu__WIRE_15__bore),
+    ._WIRE_12__bore          (_alu__WIRE_12__bore),
+    ._WIRE_8__bore           (_alu__WIRE_8__bore),
+    ._WIRE_13__bore          (_alu__WIRE_13__bore),
+    ._WIRE_7__bore           (_alu__WIRE_7__bore),
+    ._WIRE_1__bore           (_alu__WIRE_1__bore)
   );
   UnpipelinedLSU lsu (	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
     .clock                            (clock),
@@ -336,21 +336,21 @@ module EXU(	// src/main/scala/nutcore/backend/seq/EXU.scala:28:7
     .io_dtlbPF                        (_lsu_io_dtlbPF),
     .io_loadAddrMisaligned            (_lsu_io_loadAddrMisaligned),
     .io_storeAddrMisaligned           (_lsu_io_storeAddrMisaligned),
-    .lrAddr__bore                     (_csr_lrAddr__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
-    .setLrAddr__bore                  (_lsu_setLrAddr__bore),
-    .lr__bore                         (_csr_lr__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
-    .lsExecUnit_r1__bore             (_lsu_lsExecUnit_r1__bore),
+    .lsExecUnit_r_bore               (_lsu_lsExecUnit_r_bore),
     .lsExecUnit_dtlbFinish__bore      (lsu_lsExecUnit_dtlbFinish__bore),
+    .setLrAddr__bore                  (_lsu_setLrAddr__bore),
+    .setLrVal__bore                   (_lsu_setLrVal__bore),
+    .lsuMMIO__bore                    (lsu_lsuMMIO__bore),
+    .lr__bore                         (_csr_lr__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
+    .lsExecUnit__WIRE__bore           (_lsu_lsExecUnit__WIRE__bore),
+    .setLr__bore                      (_lsu_setLr__bore),
+    .lsExecUnit_io_in_bits_src1__bore (_lsu_lsExecUnit_io_in_bits_src1__bore),
+    .lrAddr__bore                     (_csr_lrAddr__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:68:19
+    ._WIRE__bore                      (lsu__WIRE__bore),
     .lsExecUnit_dtlbPF__bore          (lsu_lsExecUnit_dtlbPF__bore),
     .dtlbPF__bore                     (lsu_dtlbPF__bore),
-    ._WIRE__bore                      (lsu__WIRE__bore),
-    .lsExecUnit_io_in_bits_src1__bore (_lsu_lsExecUnit_io_in_bits_src1__bore),
-    .setLr__bore                      (_lsu_setLr__bore),
-    .lsuMMIO__bore                    (lsu_lsuMMIO__bore),
-    .lsExecUnit__WIRE__bore           (_lsu_lsExecUnit__WIRE__bore),
-    .lsExecUnit_dtlbEnable__bore      (lsu_lsExecUnit_dtlbEnable__bore),
-    .setLrVal__bore                   (_lsu_setLrVal__bore),
-    .lsExecUnit_r_bore               (_lsu_lsExecUnit_r_bore)
+    .lsExecUnit_r1__bore             (_lsu_lsExecUnit_r1__bore),
+    .lsExecUnit_dtlbEnable__bore      (lsu_lsExecUnit_dtlbEnable__bore)
   );
   wire        _GEN_1;	// src/main/scala/nutcore/backend/seq/EXU.scala:128:33
   assign _GEN_1 = _lsu_io_out_valid;	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19, :128:33
@@ -420,54 +420,54 @@ module EXU(	// src/main/scala/nutcore/backend/seq/EXU.scala:28:7
     .io_dmemMMU_storePF       (io_memMMU_dmem_storePF),
     .io_dmemMMU_addr          (io_memMMU_dmem_addr),
     .io_wenFix                (_csr_io_wenFix),
+    .perfCntCond_2__bore      (csr_perfCntCond_2__bore),
+    .perfCntCond_32__bore     (_alu__WIRE_10__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_15__bore     (csr_perfCntCond_15__bore),
     .perfCntCond_50__bore     (csr_perfCntCond_50__bore),
+    .perfCntCond_25__bore     (_alu__WIRE_3__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_51__bore     (_lsu_lsExecUnit_r_bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+    .perfCntCond_7__bore      (_GEN_1),	// src/main/scala/nutcore/backend/seq/EXU.scala:128:33
+    .setLrAddr__bore          (_lsu_setLrAddr__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+    .setLrVal__bore           (_lsu_setLrVal__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+    .perfCntCond_6__bore      (_GEN_0),	// src/main/scala/nutcore/backend/seq/EXU.scala:127:33
+    .perfCntCond_49__bore     (csr_perfCntCond_49__bore),
+    .perfCntCond_17__bore     (_alu__WIRE_2__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_31__bore     (_alu__WIRE_9__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .meip__bore               (csr_meip__bore),
+    .nutcoretrap__bore        (nutcoretrap),	// src/main/scala/nutcore/backend/seq/EXU.scala:135:31
+    .mtip__bore               (csr_mtip__bore),
+    .lr__bore                 (_csr_lr__bore),
+    .perfCntCond_10__bore     (_lsu_lsExecUnit__WIRE__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+    .perfCnts_0__bore         (_csr_perfCnts_0__bore),
+    .setLr__bore              (_lsu_setLr__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+    .perfCntCond_27__bore     (_alu__WIRE_5__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_4__bore      (csr_perfCntCond_4__bore),
+    .lsuAddr__bore            (_lsu_lsExecUnit_io_in_bits_src1__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
     .lrAddr__bore             (_csr_lrAddr__bore),
-    .perfCntCond_30__bore     (_alu__WIRE_8__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_8__bore      (_GEN_2),	// src/main/scala/nutcore/backend/seq/EXU.scala:129:33
+    .perfCntCond_14__bore     (_mdu__WIRE__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:63:19
+    .perfCntCond_5__bore      (_GEN),	// src/main/scala/nutcore/backend/seq/EXU.scala:126:33
+    .perfCntCond_18__bore     (_alu__WIRE_11__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_26__bore     (_alu__WIRE_4__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
     .satp__bore               (csr_satp__bore),
     .satp__bore_0             (csr_satp__bore_0),
-    .perfCntCond_31__bore     (_alu__WIRE_9__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .setLrAddr__bore          (_lsu_setLrAddr__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-    .lr__bore                 (_csr_lr__bore),
-    .perfCntCond_53__bore     (csr_perfCntCond_53__bore),
-    .perfCntCond_52__bore     (_lsu_lsExecUnit_r1__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
     .perfCntCond_23__bore     (_alu__WIRE_16__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCnts_2__bore         (_csr_perfCnts_2__bore),
+    .perfCntCond_21__bore     (_alu__WIRE_14__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_28__bore     (_alu__WIRE_6__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_8__bore      (_GEN_2),	// src/main/scala/nutcore/backend/seq/EXU.scala:129:33
+    .perfCntCond_22__bore     (_alu__WIRE_15__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .msip__bore               (csr_msip__bore),
+    .perfCntCond_9__bore      (_GEN_3),	// src/main/scala/nutcore/backend/seq/EXU.scala:130:33
+    .perfCntCond_19__bore     (_alu__WIRE_12__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
     ._WIRE__bore              (csr__WIRE__bore),
     ._WIRE__bore_0            (csr__WIRE__bore_0),
-    .perfCntCond_29__bore     (_alu__WIRE_7__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_32__bore     (_alu__WIRE_10__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .mtip__bore               (csr_mtip__bore),
-    .perfCntCond_3__bore      (csr_perfCntCond_3__bore),
-    .perfCntCond_28__bore     (_alu__WIRE_6__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_18__bore     (_alu__WIRE_11__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .msip__bore               (csr_msip__bore),
-    .perfCntCond_14__bore     (_mdu__WIRE__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:63:19
-    .meip__bore               (csr_meip__bore),
-    .perfCntCond_9__bore      (_GEN_3),	// src/main/scala/nutcore/backend/seq/EXU.scala:130:33
-    .perfCntCond_15__bore     (csr_perfCntCond_15__bore),
-    .perfCntCond_7__bore      (_GEN_1),	// src/main/scala/nutcore/backend/seq/EXU.scala:128:33
-    .perfCntCond_16__bore     (_alu__WIRE_1__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_49__bore     (csr_perfCntCond_49__bore),
-    .perfCntCond_27__bore     (_alu__WIRE_5__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_19__bore     (_alu__WIRE_12__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_5__bore      (_GEN),	// src/main/scala/nutcore/backend/seq/EXU.scala:126:33
-    .perfCntCond_17__bore     (_alu__WIRE_2__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .lsuAddr__bore            (_lsu_lsExecUnit_io_in_bits_src1__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-    .perfCntCond_26__bore     (_alu__WIRE_4__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_6__bore      (_GEN_0),	// src/main/scala/nutcore/backend/seq/EXU.scala:127:33
-    .nutcoretrap__bore        (nutcoretrap),	// src/main/scala/nutcore/backend/seq/EXU.scala:135:31
-    .perfCntCond_4__bore      (csr_perfCntCond_4__bore),
-    .setLr__bore              (_lsu_setLr__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-    .perfCntCond_2__bore      (csr_perfCntCond_2__bore),
+    .perfCntCond_30__bore     (_alu__WIRE_8__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_52__bore     (_lsu_lsExecUnit_r1__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
     .perfCntCond_20__bore     (_alu__WIRE_13__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_25__bore     (_alu__WIRE_3__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCnts_0__bore         (_csr_perfCnts_0__bore),
-    .perfCntCond_10__bore     (_lsu_lsExecUnit__WIRE__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-    .perfCntCond_21__bore     (_alu__WIRE_14__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCnts_2__bore         (_csr_perfCnts_2__bore),
-    .setLrVal__bore           (_lsu_setLrVal__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
-    .perfCntCond_22__bore     (_alu__WIRE_15__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
-    .perfCntCond_51__bore     (_lsu_lsExecUnit_r_bore)	// src/main/scala/nutcore/backend/seq/EXU.scala:54:19
+    .perfCntCond_53__bore     (csr_perfCntCond_53__bore),
+    .perfCntCond_29__bore     (_alu__WIRE_7__bore),	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
+    .perfCntCond_3__bore      (csr_perfCntCond_3__bore),
+    .perfCntCond_16__bore     (_alu__WIRE_1__bore)	// src/main/scala/nutcore/backend/seq/EXU.scala:46:19
   );
   MOU mou (	// src/main/scala/nutcore/backend/seq/EXU.scala:82:19
     .clock              (clock),
@@ -477,11 +477,11 @@ module EXU(	// src/main/scala/nutcore/backend/seq/EXU.scala:28:7
     .io_cfIn_pc         (io_in_bits_cf_pc),
     .io_redirect_target (_mou_io_redirect_target),
     .io_redirect_valid  (_mou_io_redirect_valid),
-    ._WIRE__bore        (mou__WIRE__bore),
-    ._WIRE__bore_0      (mou__WIRE__bore_0),
     ._WIRE_1__bore      (mou__WIRE_1__bore),
     ._WIRE_1__bore_0    (mou__WIRE_1__bore_0),
-    ._WIRE_1__bore_1    (mou__WIRE_1__bore_1)
+    ._WIRE_1__bore_1    (mou__WIRE_1__bore_1),
+    ._WIRE__bore        (mou__WIRE__bore),
+    ._WIRE__bore_0      (mou__WIRE__bore_0)
   );
   LogPerfHelper LogPerfHelper (	// difftest/src/main/scala/common/LogPerfControl.scala:60:79
     .timer     (_LogPerfHelper_timer),
